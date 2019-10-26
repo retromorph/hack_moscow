@@ -1,0 +1,54 @@
+$primary: #212121
+$primaryDark: #000000
+$primaryLight: #484848
+$accent: #00c853
+$accentLight: #5efc82
+$accentDark: #009624
+$textOnPrimary: #ffffff
+$textOnAccent: #000000
+
+//setting up theme
+@function primary($color)
+  $primary: $color !global
+  @return $primary
+
+@function primaryDark($color)
+  $primaryDark: $color !global
+  @return $primaryDark
+
+@function primaryLight($color)
+  $primaryLight: $color !global
+  @return $primaryLight
+
+@function accent($color)
+  $accent: $color !global
+  @return $accent
+
+@function accentLight($color)
+  $accentLight: $color !global
+  @return $accentLight
+
+@function accentDark($color)
+  $accentDark: $color
+  @return $accentDark
+
+@function textOnPrimary($color)
+  $textOnPrimary: $color !global
+  @return $textOnPrimary
+
+@function textOnAccent($color)
+  $textOnAccent: $color !global
+  @return $textOnAccent
+
+@function commonStyle($primary, $primaryDark, $primaryLight, $accent, $accentLight, $accentDark, $textOnPrimary, $textOnAccent)
+  $primary: $primary !global
+  $primaryDark: $primaryDark !global
+  $primaryLight: $primaryLight !global
+  $accent: $accent !global
+  $accentLight: $accentLight !global
+  $accentDark: $accentDark
+  $textOnPrimary: $textOnPrimary !global
+  $textOnAccent: $textOnAccent !global
+  @return $primary
+
+
