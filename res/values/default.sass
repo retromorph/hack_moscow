@@ -1,11 +1,18 @@
+@import "font"
+
+html, body
+  margin: 0
+  padding: 0
+
 $primary: #212121
 $primaryDark: #000000
-$primaryLight: #484848
+$primaryLight: #404040
 $accent: #00c853
 $accentLight: #5efc82
 $accentDark: #009624
 $textOnPrimary: #ffffff
 $textOnAccent: #000000
+
 
 //setting up theme
 @function primary($color)
@@ -49,6 +56,268 @@ $textOnAccent: #000000
   $accentDark: $accentDark
   $textOnPrimary: $textOnPrimary !global
   $textOnAccent: $textOnAccent !global
-  @return $primary
+  @return $primaryLight
+
+
+//setting up theme
+
+.Button
+  padding: 16px 48px
+  border-radius: 8px
+  display: flex
+  outline: none
+  align-items: center
+  border: none
+  font-family: 'proxima-nova-project', sans-serif
+  font-weight: 700
+  font-size: 1.4em
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .14)
+  cursor: pointer
+  transition: 0.2s all ease
+
+  &Primary
+    @extend .Button
+    background: $primary
+    color: $textOnPrimary
+
+    &:hover
+      background: lighten($primary, 2.5)
+
+    &:active
+      background: lighten($primary, 4)
+
+  &Accent
+    @extend .Button
+    background: $accent
+    color: $textOnAccent
+
+    &:hover
+      background: darken($accent, 2.5)
+
+    &:active
+      background: darken($accent, 4)
+
+
+.Input
+  padding: 16px 32px
+  background: $primary
+  font-family: 'proxima-nova-project', sans-serif
+  font-weight: 700
+  font-size: 1.4em
+  color: $textOnPrimary
+  outline: none !important
+  border: none
+  border-radius: 8px
+  min-width: 220px
+
+.Toolbar
+  padding: 16px 32px
+  border-bottom-right-radius: 32px
+  border-bottom-left-radius: 32px
+  position: fixed
+  top: 0
+  display: flex
+  justify-content: space-between
+  align-items: center
+  z-index: 10
+  width: 100%
+  box-sizing: border-box
+  height: 10vh
+  box-shadow: 0 4px 2px rgba(0, 0, 0, .14)
+
+  .Button
+    height: 100%
+
+  //menu
+  //  display: grid
+  //  grid-template-columns: 1fr 1fr 1fr
+  //  justify-content: center
+  //  align-items: center
+  //  height: 100%
+  //  color: white
+  //  margin-top: 0
+  //  margin-left: 58px
+  //  padding: 0
+  //  font-family: 'proxima-nova-project', sans-serif
+  //  .menu_item
+  //    text-decoration: underline
+  //    font-family: 'proxima-nova-project', sans-serif
+  //    font-weight: 700
+  //    display: flex
+  //    justify-content: center
+  //    align-items: center
+  //    height: 4vh
+  //    margin-left: 64px
+
+  &Accent
+    @extend .Toolbar
+    background: $accent
+
+  &Primary
+    @extend .Toolbar
+    background: $primary
+
+.Text
+  font-family: 'proxima-nova-project', sans-serif
+
+  &Gray
+    @extend .Text
+    color: #efefef
+
+.Title
+  @extend .Text
+  font-weight: 700
+  color: $textOnPrimary
+  font-size: 2.4em
+
+  &Black
+    @extend .Title
+    color: $textOnAccent
+
+  &Medium
+    @extend .Title
+    font-size: 1.4em
+
+.Clayed
+  display: flex
+
+  input
+    border-bottom-right-radius: 0
+    border-top-right-radius: 0
+    height: 29px
+
+  button
+    border-bottom-left-radius: 0
+    border-top-left-radius: 0
+    height: 60px
+
+.MainLayout
+  background: white
+  width: 80%
+  grid-column-gap: 48px
+  height: 600px
+  margin-top: 48px
+  border-radius: 24px
+
+.CardsGrid
+  display: grid
+  width: 80%
+  grid-column-gap: 48px
+  margin-top: 32px
+
+  &One
+    @extend .CardsGrid
+    grid-template-columns: 1fr
+
+  &Two
+    @extend .CardsGrid
+    grid-template-columns: 1fr 1fr
+
+  &Three
+    @extend .CardsGrid
+    grid-template-columns: 1fr 1fr 1fr
+
+.CardBackground
+  height: 222px
+  border-radius: 16px
+  cursor: pointer
+  box-sizing: border-box
+  margin-top: 24px
+  padding: 16px
+  display: flex
+  flex-direction: column
+  align-items: center
+  transition: 0.8s all ease
+  box-shadow: inset 220px 240px 0 rgba(0, 0, 0, .15)
+
+  .textCard
+    margin-top: 16px
+
+
+  .buttonCard
+    margin-top: auto
+    align-self: flex-end
+
+  &:hover
+    box-shadow: inset 220px 240px 0 rgba(0, 0, 0, .3)
+
+.Icon
+  width: 24px
+  height: 24px
+
+.Back
+  height: 100vh
+  top: 0
+  width: 80px
+  left: -50px
+  display: flex
+  justify-content: center
+  align-items: center
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, .17)
+  position: absolute
+  background: darken($primaryLight, 2)
+  transition: 0.6s all ease
+  cursor: pointer
+  animation: 4s pulse ease infinite backwards
+
+  img
+    transition: 0.6s all ease
+    opacity: 0.0
+
+  &:hover
+    background: darken(#fff, 10)
+    left: 0
+
+    img
+      opacity: 1.0
+
+  &:focus
+    background: darken(#fff, 20)
+
+  @keyframes pulse
+    0%
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, .17)
+    50%
+      box-shadow: 6px 6px 6px rgba(0, 0, 0, .12)
+    0%
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, .17)
+
+
+.Front
+  height: 100vh
+  top: 0
+  width: 80px
+  right: -50px
+  display: flex
+  justify-content: center
+  align-items: center
+  box-shadow: -2px -2px 2px rgba(0, 0, 0, .17)
+  position: absolute
+  background: darken($primaryLight, 2)
+  transition: 0.6s all ease
+  cursor: pointer
+  animation: 4s pulse2 ease infinite backwards
+
+  img
+    transition: 0.6s all ease
+    opacity: 0.0
+
+  &:hover
+    background: darken(#fff, 10)
+    right: 0
+
+    img
+      opacity: 1.0
+
+  &:focus
+    background: darken(#fff, 20)
+
+  @keyframes pulse2
+    0%
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, .17)
+    50%
+      box-shadow: 6px 6px 6px rgba(0, 0, 0, .12)
+    0%
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, .17)
 
 
